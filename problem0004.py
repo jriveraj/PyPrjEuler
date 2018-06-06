@@ -2,15 +2,29 @@
 
 #Find the largest palindrome made from the product of two 3-digit numbers.
 
-nCount = 0
-bExit = True
+def IsPalindrome( nNumber ):
+    sNumber = str( nNumber )
 
-while nCount < 10 and bExit :
-    nCount = nCount + 1
-    if nCount == 3:
-        bExit = False
+    nCount = 0
+    while nCount < len( sNumber ) / 2 - 0.5 :
+        #print( sNumber[nCount], sNumber[ len( sNumber ) - nCount - 1] )
+        if sNumber[nCount] != sNumber[ len( sNumber ) - nCount - 1]:
+            return False
+        nCount = nCount + 1
+    return True
 
-nPrimes = []
-nPrimes.append( 2 )
+nCeiling = 998001
 
-print( nCount, len(nPrimes) )
+i = 999
+
+bFoundIt = False
+
+while i > 900 and not bFoundIt:
+    j = 999
+    while j > 900 and not bFoundIt:
+        j = j - 1
+        if IsPalindrome( i * j ) :
+            bFoundIt = True
+    i = i - 1
+
+print( i, j, i * j)
