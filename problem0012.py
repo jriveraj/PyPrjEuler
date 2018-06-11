@@ -42,8 +42,110 @@ def isPrime(nPrime):
             f = f + 6
         return True
 
+def getfactors(n):
+    nFactors = []
+    if isPrime(n):
+        nFactors.append(1)
+        return nFactors
+    nLastMax = n
+    for i in range(1, nLastMax-1, 1):
+        if n % i == 0:
+            nFactors.append(i)
+            nLastMax = int(n / i)
+            nFactors.append(nLastMax)
+            if i + 1 >= nLastMax:
+                nFactors.sort()
+                return nFactors
+    nFactors.sort()
+    return nFactors
+
+def getfactors_brute(n):
+    nFactors = []
+    if isPrime(n):
+        nFactors.append(1)
+        return nFactors
+    for i in range(1, n, 1):
+        if n % i == 0:
+            nFactors.append(i)
+    return nFactors
+
+def factor_1_20(n):
+    nF = 0
+    for i in range(1, 20):
+        if n % i == 0:
+            nF += 1
+    return nF
+
 StartTime = datetime.now()
 nResult = 0
+nTarget = 5
+nFactors = []
+
+nMax = 500
+nMaxF = 0
+
+# 1260 36
+# 1680 40
+# 2520 48
+# 5040 60
+# 7560 64
+
+# i = 20000
+# i = 1081080 #255
+# nFactors = getfactors_brute(i)
+# print(i, len(nFactors), nFactors)
+# nFactors = getfactors(i)
+# print(i, len(nFactors), nFactors)
+# i = 1441440 #287
+# nFactors = getfactors_brute(i)
+# print(i, len(nFactors), nFactors)
+# nFactors = getfactors(i)
+# print(i, len(nFactors), nFactors)
+# i = 2162160 #319
+# nFactors = getfactors_brute(i)
+# print(i, len(nFactors), nFactors)
+# nFactors = getfactors(i)
+# print(i, len(nFactors), nFactors)
+# i = 2882880 #335
+# nFactors = getfactors_brute(i)
+# print(i, len(nFactors), nFactors)
+# nFactors = getfactors(i)
+# print(i, len(nFactors), nFactors)
+# i = 3603600 #359
+# nFactors = getfactors_brute(i)
+# print(i, len(nFactors), nFactors)
+# nFactors = getfactors(i)
+# print(i, len(nFactors), nFactors)
+# i = 4324320 #383
+# nFactors = getfactors_brute(i)
+# print(i, len(nFactors), nFactors)
+# nFactors = getfactors(i)
+# print(i, len(nFactors), nFactors)
+i = 4324320 #383
+
+# nFactors = getfactors_brute(i)
+# print(len(i, nFactors), nFactors)
+# nFactors = getfactors(i)
+# print(len(i, nFactors), nFactors)
+
+i = 1
+
+while len(nFactors) < nMax:
+    nTriaNum = int(i*(i + 1)/2)
+    if factor_1_20(nTriaNum) >= 15:
+        nFactors = getfactors(nTriaNum)
+        # print(i, len(nFactors), nFactors)
+        if len(nFactors) > nMaxF:
+            nMaxF = len(nFactors)
+            print(i, nTriaNum, len(nFactors), nFactors)
+        if len(nFactors) > nMax:
+            nMax = len(nFactors)
+            print(i, nTriaNum, len(nFactors), nFactors)
+        if i % 10000 == 0:
+            print(i, nMaxF )
+    i += 1
+
+
 
 print(StartTime, datetime.now(), datetime.now() - StartTime )
-print(nResult)
+
