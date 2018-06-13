@@ -30,8 +30,15 @@ def isPrime(nPrime):
 StartTime = datetime.now()
 nResult = 0
 
-for i in range(13, 93, 10):
-    print(i, isPrime(i))
+# for i in range(13, 93, 10):
+#     print(i, isPrime(i))
+
+dCalliouz = {}
+
+dCalliouz[1] = 12
+dCalliouz[15] = 23
+
+print( 2 in dCalliouz )
 
 print(StartTime, datetime.now(), datetime.now() - StartTime )
 print(nResult)
