@@ -2,6 +2,7 @@
 
 #What is the largest prime factor of the number 600851475143 ?
 
+from datetime import datetime
 
 #nTarget = 600851475143
 nTarget = 13195
@@ -22,6 +23,8 @@ def GeneratePrimeList():
             nPrimes.append( nCount )
         nCount  = nCount + 2
 
+
+StartTime = datetime.now()
 GeneratePrimeList()
 
 nCount = len( nPrimes )
@@ -32,3 +35,6 @@ while nCount > 0:
     nCount = nCount - 1
     if nTarget % nPrimes[ nCount ] == 0:
         print( nPrimes[ nCount ] )
+
+print(StartTime, datetime.now(), datetime.now() - StartTime )
+# print(nResult)
